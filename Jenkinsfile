@@ -1,16 +1,15 @@
 pipeline {
 	agent any
 	stages{
-		stage ('download from github') {
-			steps {
+		steps ('download from github') {
 				echo "downloadfromgithub"
 				git ' https://github.com/vimallinuxworld13/simple-java-maven-app.git '
 			}
 		}	
-		stage ( ' build ') {
+		steps( ' build ') {
 			sh ' mvn clean package '
 		}
- 		stage ( 'deploy') {
+ 		steps ( 'deploy') {
 			sh ' java -jar target/*.jar '
 		}
 	}
